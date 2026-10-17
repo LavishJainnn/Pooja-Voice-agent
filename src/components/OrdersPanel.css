@@ -1,0 +1,100 @@
+/* OrdersPanel.css */
+.orders-panel {
+  background: rgba(20, 16, 10, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+}
+
+.orders-header {
+  margin-bottom: 1rem;
+}
+
+.orders-title {
+  display: block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #d4af37;
+  margin-bottom: 0.2rem;
+}
+
+.orders-subtitle {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.order-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  border-radius: 10px;
+  padding: 0.75rem 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  transition: border-color 0.2s;
+}
+
+.order-card:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+}
+
+.order-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.order-id {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #d4af37;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.05em;
+}
+
+.order-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.order-customer,
+.order-product,
+.order-value,
+.order-notes,
+.order-tracking {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.4;
+}
+
+.order-customer { color: rgba(255, 255, 255, 0.7); }
+.order-product { color: rgba(255, 255, 255, 0.6); }
+.order-value { font-weight: 600; color: #4ecb6e; }
+
+.orders-tip {
+  margin-top: 1rem;
+  padding: 0.6rem 0.875rem;
+  background: rgba(212, 175, 55, 0.06);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+.orders-tip em {
+  color: #d4af37;
+  font-style: italic;
+}
