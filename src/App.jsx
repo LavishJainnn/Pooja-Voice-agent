@@ -146,7 +146,7 @@ export default function App() {
           <div className="agent-card">
             {/* Agent identity */}
             <div className="agent-name-block">
-              <span className="agent-name">Aria</span>
+              <span className="agent-name">Pooja</span>
               <span className="agent-title">Aura Skincare · Customer Support</span>
             </div>
 
@@ -161,9 +161,9 @@ export default function App() {
                 ) : agentState === AGENT_STATE.LISTENING ? (
                   "Listening for your voice..."
                 ) : agentState === AGENT_STATE.THINKING ? (
-                  "Aria is thinking..."
+                  "Pooja is thinking..."
                 ) : agentState === AGENT_STATE.SPEAKING ? (
-                  "Aria is responding..."
+                  "Pooja is responding..."
                 ) : (
                   "Initialising..."
                 )}

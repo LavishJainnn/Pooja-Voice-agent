@@ -54,7 +54,7 @@ export function useCallManager() {
           if (isCallActiveRef.current) {
             setAgentState(AGENT_STATE.LISTENING);
             // Re-trigger recognition via event
-            window.dispatchEvent(new CustomEvent("aria-listen"));
+            window.dispatchEvent(new CustomEvent("Pooja-listen"));
           }
         });
       } catch (err) {
@@ -77,8 +77,8 @@ export function useCallManager() {
       onError: handleSpeechError,
     });
 
-  // Listen for the aria-listen event
-  const handleAriaListen = useCallback(() => {
+  // Listen for the Pooja-listen event
+  const handlePoojaListen = useCallback(() => {
     if (isCallActiveRef.current) {
       startListening();
     }
@@ -97,13 +97,13 @@ export function useCallManager() {
     setCallState("active");
     setAgentState(AGENT_STATE.THINKING);
 
-    window.addEventListener("aria-listen", handleAriaListen);
+    window.addEventListener("Pooja-listen", handlePoojaListen);
 
     try {
       await initChat();
       // Get opening greeting
       const { text } = await sendMessage(
-        "[SYSTEM: The call has just started. Greet the customer as Aria from Aura Skincare.]"
+        "[SYSTEM: The call has just started. Greet the customer as Pooja from Aura Skincare.]"
       );
       addToTranscript("agent", text);
       setAgentState(AGENT_STATE.SPEAKING);
@@ -121,14 +121,14 @@ export function useCallManager() {
       setCallState("inactive");
       isCallActiveRef.current = false;
     }
-  }, [isSupported, initChat, sendMessage, speak, startListening, addToTranscript, handleAriaListen]);
+  }, [isSupported, initChat, sendMessage, speak, startListening, addToTranscript, handlePoojaListen]);
 
   const generateCallSummary = useCallback(async (transcriptData) => {
     try {
       const summaryPrompt = `Based on this call transcript, generate a structured JSON summary. Return ONLY valid JSON, no markdown.
 
 Transcript:
-${transcriptData.map((t) => `${t.role === "user" ? "Customer" : "Aria"}: ${t.text}`).join("\n")}
+${transcriptData.map((t) => `${t.role === "user" ? "Customer" : "Pooja"}: ${t.text}`).join("\n")}
 
 Return JSON with these fields:
 {
@@ -156,7 +156,7 @@ Return JSON with these fields:
     isCallActiveRef.current = false;
     stopListening();
     stopSpeaking();
-    window.removeEventListener("aria-listen", handleAriaListen);
+    window.removeEventListener("Pooja-listen", handlePoojaListen);
     setAgentState(AGENT_STATE.IDLE);
     setCallState("ended");
 
@@ -167,7 +167,7 @@ Return JSON with these fields:
     }
 
     resetChat();
-  }, [stopListening, stopSpeaking, handleAriaListen, transcript, generateCallSummary, resetChat]);
+  }, [stopListening, stopSpeaking, handlePoojaListen, transcript, generateCallSummary, resetChat]);
 
   return {
     callState,
